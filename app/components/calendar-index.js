@@ -11,7 +11,6 @@ export default Component.extend({
 
   actions: {
     updateRoom: function(room) {
-      alert(room);
       this.set('room', room);
     }
   }

@@ -1,9 +1,18 @@
-<nav class="navbar">
-  <a class="navbar-item">
-    {{#power-select selected=currentRoom
-                    options=rooms
-                    onchange=(action "updateRoom") as |room|}}
-      {{room}}
-    {{/power-select}}
-  </a>
-</nav>
+<section class="hero">
+  <div class="hero-head">
+    <div class="columns">
+      <div class="column is-3">
+        <a class="navbar-item">
+          {{#power-select selected=currentRoom
+                          options=rooms
+                          onchange=(action "updateRoom") as |room|}}
+            {{room}}
+          {{/power-select}}
+        </a>
+      </div>
+      <div class="column">
+        {{currentRoom}}
+      </div>
+    </div>
+  </div>
+</section>
