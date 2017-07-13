@@ -1,6 +1,7 @@
 <section class="hero is-primary is-fullheight">
   {{room-nav currentRoom=room}}
   {{room-selector updateRoom="updateRoom" currentRoom=room}}
+  {{auth-modal}}
   {{event-carousel events=events}}
   {{event-add}}
 </section>

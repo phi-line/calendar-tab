@@ -27,7 +27,15 @@ module.exports = function(environment) {
   if (environment === 'development') {
     ENV.rooms = ['The Shire', 'NCC-1701', 'Hogwarts',
                  'Kings Landing', 'Endor', 'Fortress of Solitude'];
-    ENV.key = "981665334935-oud3fdqe8o0bpi8j88jnk7loq9kndb1t.apps.googleusercontent.com"
+
+    ENV.torii = {
+      providers: {
+        'google-oauth2': {
+          apiKey: "938170035981-632lquku902aqgvv1tgq9g7mimjo16kt.apps.googleusercontent.com",
+          redirectUri: "http://localhost:4200/oauth2callback"
+        }
+      }
+    };
   }
 
   if (environment === 'test') {
