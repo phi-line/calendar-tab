@@ -1,0 +1,9 @@
+<nav class="navbar">
+  <a class="navbar-item">
+    {{#power-select selected=currentRoom
+                    options=rooms
+                    onchange=(action "updateRoom") as |room|}}
+      {{room}}
+    {{/power-select}}
+  </a>
+</nav>
