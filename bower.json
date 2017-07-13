@@ -1,0 +1,6 @@
+{
+  "name": "calendar-tab",
+  "dependencies": {
+    "swiper": "~3.4.1"
+  }
+}

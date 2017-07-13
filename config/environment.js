@@ -27,6 +27,7 @@ module.exports = function(environment) {
   if (environment === 'development') {
     ENV.rooms = ['The Shire', 'NCC-1701', 'Hogwarts',
                  'Kings Landing', 'Endor', 'Fortress of Solitude'];
+    ENV.key = "981665334935-oud3fdqe8o0bpi8j88jnk7loq9kndb1t.apps.googleusercontent.com"
   }
 
   if (environment === 'test') {

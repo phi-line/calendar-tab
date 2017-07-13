@@ -1,1 +1,7 @@
-{{yield}}
+<div class="hero-head">
+  {{#swiper-container grabCursor=true slidesPerView=4 spaceBetween=5}}
+    {{#each events as |event|}}
+      {{#swiper-slide}}{{event-card event=event}}{{/swiper-slide}}
+    {{/each}}
+  {{/swiper-container}}
+</div>
