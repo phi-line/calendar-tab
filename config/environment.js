@@ -28,13 +28,19 @@ module.exports = function(environment) {
     ENV.rooms = ['The Shire', 'NCC-1701', 'Hogwarts',
                  'Kings Landing', 'Endor', 'Fortress of Solitude'];
 
+    ENV.apiKey= "938170035981-632lquku902aqgvv1tgq9g7mimjo16kt.apps.googleusercontent.com";
+    ENV.docs = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
+    ENV.scopes = "https://www.googleapis.com/auth/calendar.readonly";
+
     ENV.torii = {
       providers: {
         'google-oauth2': {
           apiKey: "938170035981-632lquku902aqgvv1tgq9g7mimjo16kt.apps.googleusercontent.com",
-          redirectUri: "http://localhost:4200/oauth2callback"
+          redirectUri: "http://localhost:4200/oauth2callback",
+          scope: "https://www.googleapis.com/auth/calendar.readonly"
         }
-      }
+      },
+      allowUnsafeRedirect: true
     };
   }
 
