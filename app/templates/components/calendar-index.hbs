@@ -1,3 +1,6 @@
-{{room-nav updateRoom="updateRoom" currentRoom=room}}
-{{event-carousel}}
-{{event-add}}
+<section class="hero is-primary is-fullheight">
+  {{room-nav currentRoom=room}}
+  {{room-selector updateRoom="updateRoom" currentRoom=room}}
+  {{event-carousel}}
+  {{event-add}}
+</section>

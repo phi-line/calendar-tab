@@ -1,3 +1,6 @@
 @import "bulma";
+@import "pod-styles";
 
+// In your app.scss
+$ember-power-select-border-color: #fff;
 @import "ember-power-select";

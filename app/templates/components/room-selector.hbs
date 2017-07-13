@@ -1,0 +1,8 @@
+<div class="room-select">
+    {{#power-select selected=currentRoom
+                    options=rooms
+                    onchange=(action "updateRoom")
+                    searchEnabled=false as |room|}}
+      {{room}}
+    {{/power-select}}
+</div>
