@@ -53,8 +53,8 @@ export default Component.extend({
     const self = this
     let events = self.get('events');
     if(events.length > 0){
-      let nowTime = new DateTime();
-      let topEvent = event[0];
+      let nowTime = new Date();
+      let topEvent = events[0];
       if(topEvent.timeMin <= nowTime && nowTime <= topEvent.timeMax) {
         return topEvent;
       }
