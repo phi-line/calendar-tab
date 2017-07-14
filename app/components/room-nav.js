@@ -1,6 +1,5 @@
 import Ember from 'ember';
-const {Component, computed: {notEmpty}} = Ember;
+const {Component} = Ember;
 
 export default Component.extend({
-    //isOpen: notEmpty('currentEvent')
 });

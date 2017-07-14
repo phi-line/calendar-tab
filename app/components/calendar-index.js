@@ -1,10 +1,15 @@
 import Ember from 'ember';
-const {A, Component, computed, computed: {readOnly}, inject: { service }, observer, on} = Ember;
+const {A, Component, computed, computed: {readOnly, empty}, inject: { service }, observer, on} = Ember;
 
 export default Component.extend({
   room: null,
   events: A([]),
   calendars: A([]),
+
+  clock: service('my-shiny-new-clock'),
+  time: computed('clock.date', function() {
+    return this.get('clock.date');
+  }),
 
   session: service('session'),
   isAuth: readOnly('session.isAuthenticated'),
@@ -39,7 +44,7 @@ export default Component.extend({
           'timeMax': (end.toISOString()),
           'showDeleted': false,
           'singleEvents': true,
-          'maxResults': 5,
+          'maxResults': 10,
           'orderBy': 'startTime'
           }).then(function(response) {
             let events = response.result.items;
@@ -49,17 +54,22 @@ export default Component.extend({
     }
   }),
 
-  currentEvent: observer('events', function(){
-    const self = this
+  currentEvent: computed('events', function(){
+    const self = this;
     let events = self.get('events');
     if(events.length > 0){
-      let nowTime = new Date();
-      let topEvent = events[0];
-      if(topEvent.timeMin <= nowTime && nowTime <= topEvent.timeMax) {
+      let nowTime = new Date(); nowTime = nowTime.getTime();
+      let topEvent = events['0'];
+      let eventStart = new Date(topEvent.start['dateTime']); eventStart = eventStart.getTime();
+      let eventEnd = new Date(topEvent.end['dateTime']); eventEnd = eventEnd.getTime();
+      if(eventStart <= nowTime && nowTime <= eventEnd) {
         return topEvent;
       }
     }
+    return events;
   }),
+
+  isOpen: empty('currentEvent'),
 
   actions: {
     updateRoom: function(room) {
