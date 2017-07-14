@@ -74,6 +74,8 @@ export default Component.extend({
   actions: {
     updateRoom: function(room) {
       this.set('room', room);
+      let picNum = Math.floor((Math.random() * 30) + 1);
+      $('body').css('backgroundImage', 'url("/assets/' + picNum + '.jpeg")');
     }
   }
 });
