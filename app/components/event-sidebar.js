@@ -10,5 +10,11 @@ export default Component.extend({
     else
       bgColor = 'background-color: rgba(234,111,98,0.95)';
     return new Ember.Handlebars.SafeString(bgColor);
-  })
+  }),
+
+  actions:{
+    addEvent: function() {
+      this.sendAction('addEvent');
+    }
+  }
 });
