@@ -7,7 +7,9 @@
       <h1 class="title open is-1">OPEN</h1>
     {{else}}
       <div class="title meeting is-1">
-        {{event-title event=currentEvent}}
+        {{#if currentEvent}}
+          {{event-title event=currentEvent}}
+        {{/if}}
       </div>
     {{/if}}
   </div>

@@ -80,7 +80,7 @@ export default Component.extend({
     },
 
     addEvent: function() {
-      alert('meow');
+      alert('Added quick event to '+ this.get('room'));
     }
   }
 });
