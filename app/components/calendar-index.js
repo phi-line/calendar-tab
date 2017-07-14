@@ -1,5 +1,5 @@
 import Ember from 'ember';
-const {A, Component, computed, computed: {readOnly, notEmpty}, inject: { service }, observer, on} = Ember;
+const {A, Component, computed, computed: {readOnly, empty}, inject: { service }, observer, on} = Ember;
 
 export default Component.extend({
   room: null,
@@ -54,19 +54,22 @@ export default Component.extend({
     }
   }),
 
-  currentEvent: observer('time', function(){
+  currentEvent: computed('events', function(){
     const self = this;
     let events = self.get('events');
     if(events.length > 0){
-      let nowTime = this.get('time');
-      let topEvent = events[0];
-      if(topEvent.timeMin <= nowTime && nowTime <= topEvent.timeMax) {
+      let nowTime = new Date(); nowTime = nowTime.getTime();
+      let topEvent = events['0'];
+      let eventStart = new Date(topEvent.start['dateTime']); eventStart = eventStart.getTime();
+      let eventEnd = new Date(topEvent.end['dateTime']); eventEnd = eventEnd.getTime();
+      if(eventStart <= nowTime && nowTime <= eventEnd) {
         return topEvent;
       }
     }
+    return events;
   }),
 
-  isOpen: notEmpty('currentEvent'),
+  isOpen: empty('currentEvent'),
 
   actions: {
     updateRoom: function(room) {
