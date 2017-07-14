@@ -12,7 +12,7 @@ export default Component.extend({
   isAuth: readOnly('session.isAuthenticated'),
   getRooms: on('init', observer('isAuth', function() {
     const self = this;
-    if (this.get('isAuth')) {
+    if (gapi.auth2.getAuthInstance().isSignedIn.get()) {
       gapi.client.calendar.calendarList.list({
       }).then(function(response) {
         let calendars = response.result.items;
