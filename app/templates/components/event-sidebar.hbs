@@ -1,13 +1,18 @@
-<div class="sidebar">
-  <section class="section">
+<section class="hero is-fullheight sidebar">
+  <div class="hero-head">
     {{sidebar-time}}
-  </section>
-  <section class="section event-list">
-    <h1 class="title"><strong>Upcoming Reservations</strong></h1>
-    <ul>
+  </div>
+  <div class="hero-head event-list">
+    <section class="section">
+      <h1 class="title"><strong>Upcoming Reservations</strong></h1>
       {{#each events as |event|}}
-
+        {{event-item event=event}}
       {{/each}}
-    </ul>
-  </section>
-</div>
+    </section>
+  </div>
+  <div class="hero-foot event-add">
+    <section class="section">
+      {{event-add}}
+    </section>
+  </div>
+</section>
