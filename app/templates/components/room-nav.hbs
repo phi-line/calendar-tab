@@ -1,12 +1,14 @@
 <section class="hero is-fullheight">
   <div class="hero-head">
-    <h1 class="title is-1 is-unselectable"><strong>{{currentRoom}}</strong></h1>
+    <h1 class="title is-1 is-unselectable room"><strong>{{currentRoom}}</strong></h1>
   </div>
   <div class="hero-foot">
     {{#if isOpen}}
-      <h1 class="title is-1">OPEN</h1>
+      <h1 class="title open is-1">OPEN</h1>
     {{else}}
-      {{event-title event=currentEvent}}
+      <div class="title meeting is-1">
+        {{event-title event=currentEvent}}
+      </div>
     {{/if}}
   </div>
 </section>

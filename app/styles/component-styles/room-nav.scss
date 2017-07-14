@@ -3,8 +3,31 @@
       background: transparent;
     }
 
-    h1.title {
+    .room {
       font-size: 6em;
-      font-weight: lighter;
+      font-weight: 500;
+      color: white;
+      text-shadow: 0 2px 2px black;
+      padding-left: 35px;
+      padding-top: 35px;
+      
+    }
+
+    .open {
+      font-size: 10em;
+      font-weight: 500;
+      color: #fff;
+      text-shadow: 0 2px 2px black;
+      padding-left: 35px;
+      padding-bottom: 15px;
+    }
+
+    .meeting {
+      font-size: 6em;
+      font-weight: 500;
+      color: white;
+      text-shadow: 0 2px 2px black;
+      padding-left: 35px;
+      padding-bottom: 15px;
     }
 }
