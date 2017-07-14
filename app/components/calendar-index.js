@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import config from '../config/environment';
-const {A, Component, computed, inject: { service }, observer} = Ember;
+const {A, Component, computed, computed: {readOnly}, inject: { service }, observer, on} = Ember;
 
 export default Component.extend({
   init() {
@@ -8,20 +8,19 @@ export default Component.extend({
     this.set('room', 'The Shire');
   },
 
-  config: config.torii.providers['github-oauth2'],
-
   room: null,
   //events: A([{name: 'Event A'}, {name: 'Event B'}, {name: 'Event C'}, {name: 'Event D'}, {name: 'Event E'}]),
   events: A([{name: 'Event A'}]),
 
   session: service('session'),
-  onSessionAuth: computed('session.isAuthenticated', function(){
+  isAuth: readOnly('session.isAuthenticated'),
+  isSignedIn: Ember.on('init', observer('isAuth', function() {
+    if (this.get('isAuth')) {
+      alert('meow');
+      //load calendar events
+    }
     return true;
-  }),
-
-  propagateEvents() {
-    alert('you did it!');
-  },
+  })),
 
   onRoomChange: observer('room', function(){
 
