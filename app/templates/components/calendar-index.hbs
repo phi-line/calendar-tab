@@ -1,10 +1,10 @@
 <div class="columns is-gapless">
   {{auth-modal}}
   <div class="column is-7">
-    {{room-nav currentRoom=room}}
+    {{room-nav currentRoom=room currentEvent=currentEvent isOpen=isOpen}}
     {{room-selector updateRoom="updateRoom" currentRoom=room}}
   </div>
   <div class="column">
-    {{event-sidebar events=events currentRoom=room}}
+    {{event-sidebar events=events currentRoom=room isOpen=isOpen}}
   </div>
 </div>
