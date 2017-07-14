@@ -6,10 +6,17 @@ export default Component.extend({
 
   time: Ember.computed('clock.date', function() {
     let clockDate = this.get('clock.date');
+    let hours = clockDate.getHours();
     let minutes = clockDate.getMinutes();
-    if (minutes < 10) {
-      let minutes = "0" + minutes;
+    if (hours === 0) {
+      hours = 12;
     }
-    return clockDate.getHours() + ":" + minutes + ":" + clockDate.getSeconds();
+    if (hours > 12) {
+      hours -= 12;
+    }
+    if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
+    return hours + ":" + minutes;
   })
 });
