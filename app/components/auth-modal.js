@@ -1,9 +1,9 @@
 import Ember from 'ember';
-const {computed: {readOnly}, inject: { service }} = Ember;
+const {computed: {readOnly}, inject: { service }, on} = Ember;
 
 export default Ember.Component.extend({
   session: service('session'),
-  isAuthenticated: Ember.on('init', readOnly('session.isAuthenticated')),
+  isAuthenticated: on('init', readOnly('session.isAuthenticated')),
 
   actions: {
     authenticateSession() {

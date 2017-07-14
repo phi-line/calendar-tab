@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import config from '../config/environment';
 const {A, Component, computed, computed: {readOnly}, inject: { service }, observer, on} = Ember;
 
 export default Component.extend({
@@ -9,19 +8,21 @@ export default Component.extend({
   },
 
   room: null,
-  //events: A([{name: 'Event A'}, {name: 'Event B'}, {name: 'Event C'}, {name: 'Event D'}, {name: 'Event E'}]),
   events: A([{name: 'Event A'}]),
 
   session: service('session'),
   isAuth: readOnly('session.isAuthenticated'),
-  isSignedIn: Ember.on('init', observer('isAuth', function() {
+  calendars: on('init', computed('isAuth', function() {
     if (this.get('isAuth')) {
       gapi.client.calendar.calendarList.list({
       }).then(function(response) {
-        alert(JSON.stringify(response));
+        let calendars = response.result.items;
+        calendars = calendars.filter(function(cal) {
+          return cal.summary.includes('(Room)');
+        })
+        return calendars;
       });
     }
-    return true;
   })),
 
   onRoomChange: observer('room', function(){

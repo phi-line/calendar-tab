@@ -1,10 +1,12 @@
 import Ember from 'ember';
 import config from '../config/environment';
-const {Component} = Ember;
+const {Component, computed, computed: {readOnly}, on} = Ember;
 
 export default Component.extend({
   rooms: config.rooms,
-  currentRoom: 'The Shire',
+  currentRoom: on('init', computed('rooms', function(){
+    return this.get('rooms').get('firstObject');
+  })),
 
   actions: {
     updateRoom: function(room){
