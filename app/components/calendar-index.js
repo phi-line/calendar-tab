@@ -77,6 +77,10 @@ export default Component.extend({
       let picNum = Math.floor((Math.random() * 30) + 1);
       $('body').css('backgroundImage', 'url("/assets/' + picNum + '.jpeg")');
       $('body').css('backgroundSize', 'cover');
+    },
+
+    addEvent: function() {
+      alert('meow');
     }
   }
 });
