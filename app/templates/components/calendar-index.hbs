@@ -1,7 +1,12 @@
 <section class="hero is-primary is-fullheight">
-  {{room-nav currentRoom=room}}
-  {{room-selector updateRoom="updateRoom" currentRoom=room}}
-  {{auth-modal}}
-  {{event-carousel events=events}}
-  {{event-add}}
+  <div class="columns is-gapless">
+    {{auth-modal}}
+    <div class="column is-7">
+      {{room-nav currentRoom=room}}
+      {{room-selector updateRoom="updateRoom" currentRoom=room}}
+    </div>
+    <div class="column">
+      {{event-sidebar events=events}}
+    </div>
+  </div>
 </section>

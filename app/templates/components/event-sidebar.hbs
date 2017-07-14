@@ -1,0 +1,12 @@
+<div class="sidebar">
+  <section class="section">
+    {{sidebar-time}}
+  </section>
+  <section class="section event-list">
+    <ul>
+      {{#each events as |event|}}
+        <li>{{event.summary}}</li>
+      {{/each}}
+    </ul>
+  </section>
+</div>

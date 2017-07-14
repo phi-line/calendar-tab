@@ -1,11 +1,11 @@
 & {
     .ember-power-select-trigger {
       color: #000;
-      width: 15%;
+      width: 58%;
       height: 10%;
       position: fixed;
       top: .5em;
-      right: .5em;
+      left: .5em;
       z-index: 3;
 
         &:focus {
@@ -14,17 +14,17 @@
     }
 
     .ember-power-select-trigger {
-      border: #fff solid 1px;
+      border: none;
       background-color: rgba(0,0,0,0);
 
         &:focus {
-          border: #fff solid 1px;
+          border: none;
           background-color: rgba(0,0,0,0);
         }
     }
 
     .ember-power-select-status-icon {
-      border-color: #fff transparent transparent transparent;
+      border: none;
     }
 
     .ember-power-select-selected-item {
