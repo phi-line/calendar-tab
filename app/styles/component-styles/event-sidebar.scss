@@ -1,10 +1,18 @@
 & {
+    .hero {
+      background: transparent;
+    }
+
     .section {
-      background: none;
+      background: transparent;
     }
 
     .sidebar {
       height: 100vh;
       background-color: rgba(0,0,0,0.5);
+    }
+
+    .event-list {
+      vertical-align: top;
     }
 }

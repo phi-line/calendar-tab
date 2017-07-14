@@ -1,12 +1,10 @@
-<section class="hero is-primary is-fullheight">
-  <div class="columns is-gapless">
-    {{auth-modal}}
-    <div class="column is-7">
-      {{room-nav currentRoom=room}}
-      {{room-selector updateRoom="updateRoom" currentRoom=room}}
-    </div>
-    <div class="column">
-      {{event-sidebar events=events}}
-    </div>
+<div class="columns is-gapless">
+  {{auth-modal}}
+  <div class="column is-7">
+    {{room-nav currentRoom=room}}
+    {{room-selector updateRoom="updateRoom" currentRoom=room}}
   </div>
-</section>
+  <div class="column">
+    {{event-sidebar events=events currentRoom=room}}
+  </div>
+</div>

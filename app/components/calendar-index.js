@@ -6,8 +6,6 @@ export default Component.extend({
   events: A([]),
   calendars: A([]),
 
-  currentEvent: null,
-
   session: service('session'),
   isAuth: readOnly('session.isAuthenticated'),
   getRooms: on('init', observer('isAuth', function() {
@@ -19,7 +17,6 @@ export default Component.extend({
         calendars = calendars.filter(function(cal) {
           return cal.summary.includes('(Room)');
         });
-        console.log(calendars);
         self.set('calendars', calendars);
       });
     }
@@ -30,7 +27,6 @@ export default Component.extend({
     const self = this;
     if (self.get('calendars').length > 0){
       let roomCalendar = self.get('calendars').filter(function(cal) {
-        console.log(self.get('room'));
         return cal.summary.includes(self.get('room'));
       });
       if (roomCalendar) {
@@ -47,9 +43,20 @@ export default Component.extend({
           'orderBy': 'startTime'
           }).then(function(response) {
             let events = response.result.items;
-            console.log(events);
             self.set('events', events);
           })
+      }
+    }
+  }),
+
+  currentEvent: observer('events', function(){
+    const self = this
+    let events = self.get('events');
+    if(events.length > 0){
+      let nowTime = new DateTime();
+      let topEvent = event[0];
+      if(topEvent.timeMin <= nowTime && nowTime <= topEvent.timeMax) {
+        return topEvent;
       }
     }
   }),
