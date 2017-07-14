@@ -30,12 +30,17 @@ export default Component.extend({
     const self = this;
     if (self.get('calendars').length > 0){
       let roomCalendar = self.get('calendars').filter(function(cal) {
+        console.log(self.get('room'));
         return cal.summary.includes(self.get('room'));
       });
       if (roomCalendar) {
+        let start = new Date();
+        let end = new Date(start.getTime());
+        end.setHours(23,59,59,999); //set time to 11:59 pm
         gapi.client.calendar.events.list({
           'calendarId': roomCalendar[0].id,
-          'timeMin': (new Date()).toISOString(),
+          'timeMin': (start.toISOString()),
+          'timeMax': (end.toISOString()),
           'showDeleted': false,
           'singleEvents': true,
           'maxResults': 5,
