@@ -16,8 +16,10 @@ export default Component.extend({
   isAuth: readOnly('session.isAuthenticated'),
   isSignedIn: Ember.on('init', observer('isAuth', function() {
     if (this.get('isAuth')) {
-      alert('meow');
-      //load calendar events
+      gapi.client.calendar.calendarList.list({
+      }).then(function(response) {
+        alert(JSON.stringify(response));
+      });
     }
     return true;
   })),

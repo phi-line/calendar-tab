@@ -37,7 +37,7 @@ module.exports = function(environment) {
         'google-oauth2': {
           apiKey: "938170035981-632lquku902aqgvv1tgq9g7mimjo16kt.apps.googleusercontent.com",
           redirectUri: "http://localhost:4200/oauth2callback",
-          scope: "https://www.googleapis.com/auth/calendar.readonly"
+          scope: "https://www.googleapis.com/auth/calendar"
         }
       },
       allowUnsafeRedirect: true
